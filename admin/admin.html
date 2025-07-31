@@ -1,0 +1,1089 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal - Manass One Nation Kaduna Regus</title>
+    <link rel="stylesheet" href="../admin/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                  <img src="../assets/logo/logo.jpg" alt="logo" class="l">
+                </div>
+                <div class="logo-text">
+                    <h1>Manass One Nation</h1>
+                    <p>Kaduna Regus Community</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../home.html" class="active">Home</a></li>
+                    <li><a href="../files/members.html">Members</a></li>
+                    <li><a href="../files/event.html">Events</a></li>
+                    <li><a href="../files/about.html">About Us</a></li>
+                    <li><a href="../files/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+       <h3 class="ks"> <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></h3>
+        <h3 class="ks"><a href="#" id="edit-profile-btn"><i class="fas fa-user-edit"></i> Edit Profile</a></h3>
+        <center><h3 class="active">Admin Portal</a></h3></center>
+
+    </header>
+    <!-- Authentication Section -->
+    <div class="auth-container" id="auth-section">
+        <div class="auth-left">
+            <h2>Admin Portal</h2>
+            <p>Manage all community members and activities through our secure admin portal. Access member details, monitor community growth, and manage content.</p>
+            <div class="features">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                    <i class="fas fa-users fa-2x" style="color: var(--secondary);"></i>
+                    <div>View and manage all community members</div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                    <i class="fas fa-edit fa-2x" style="color: var(--warning);"></i>
+                    <div>Edit member details and profiles</div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                    <i class="fas fa-user-plus fa-2x" style="color: var(--success);"></i>
+                    <div>Admin accounts with profile photos</div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                    <i class="fas fa-shield-alt fa-2x" style="color: var(--accent);"></i>
+                    <div>Secure access with role-based permissions</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="auth-right">
+            <div class="auth-form">
+                <div class="auth-tabs">
+                    <div class="auth-tab active" data-tab="login">Admin Login</div>
+                    <div class="auth-tab" data-tab="signup">Admin Signup</div>
+                </div>
+                
+  <!-- Login Form -->
+                <form id="login-form" class="auth-content">
+                    <div class="form-group">
+                        <label for="login-email">Admin Email</label>
+                        <input type="email" id="login-email" placeholder="admin@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" placeholder="••••••••" required>
+                    </div>
+                    
+                    <button type="submit" class="btn">Login to Dashboard</button>
+                </form>
+                
+                <!-- Signup Form -->
+                <form id="signup-form" class="auth-content" style="display: none;">
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" placeholder="John Doe" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-email">Admin Email</label>
+                        <input type="email" id="signup-email" placeholder="admin@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" placeholder="••••••••" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-confirm">Confirm Password</label>
+                        <input type="password" id="signup-confirm" placeholder="••••••••" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Profile Photo</label>
+                        <div class="photo-upload-container">
+                            <img id="signup-photo-preview" class="admin-photo-preview" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Preview">
+                            <input type="file" id="signup-photo" accept="image/*" style="display: none;">
+                            <label for="signup-photo" class="file-input-label">
+                                <i class="fas fa-camera"></i> Choose Photo
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-accent">Create Admin Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard Section -->
+    <div class="admin-section" id="admin-section">
+        <div class="container">
+            <div class="admin-header">
+                <div class="admin-info">
+                    <div class="admin-avatar" id="admin-avatar">
+                        <div class="admin-dropdown" id="admin-dropdown">
+                            <a href="#" id="edit-profile-btn"><i class="fas fa-user-edit"></i> Edit Profile</a>
+                           
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Admin Dashboard</h3>
+                        <p>Welcome back, <span id="admin-name">Admin User</span></p>
+                    </div>
+                </div>
+                <button class="btn" id="add-member-btn"><i class="fas fa-user-plus"></i> Add New Member</button>
+            </div>
+            
+            <div class="admin-stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="total-members">0</div>
+                    <div class="stat-label">Total Members</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number" id="new-members">0</div>
+                    <div class="stat-label">New This Week</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number" id="active-members">0</div>
+                    <div class="stat-label">Active Members</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number" id="pending-approvals">0</div>
+                    <div class="stat-label">Pending Approvals</div>
+                </div>
+            </div>
+            
+            <div class="section-title">
+                <h2>Community Members</h2>
+            </div>
+            
+            <div id="members-container">
+                <table class="members-table">
+                    <thead>
+                        <tr>
+                            <th>Photo</th>
+                            <th>Name</th>
+                            <th>Contact</th>
+                            <th>Occupation</th>
+                            <th>Location</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="members-list">
+                        <!-- Members will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="admin-profile-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Admin Profile</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="admin-profile-form">
+                    <div class="form-group">
+                        <label for="admin-edit-name">Full Name</label>
+                        <input type="text" id="admin-edit-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="admin-edit-email">Email</label>
+                        <input type="email" id="admin-edit-email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="admin-edit-password">New Password (leave blank to keep current)</label>
+                        <input type="password" id="admin-edit-password">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Profile Photo</label>
+                        <div class="photo-upload-container">
+                            <img id="admin-photo-preview" class="admin-photo-preview" alt="Preview">
+                            <input type="file" id="admin-photo" accept="image/*" style="display: none;">
+                            <label for="admin-photo" class="file-input-label">
+                                <i class="fas fa-camera"></i> Change Photo
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-accent">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="member-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="member-modal-title">Edit Member</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="member-form">
+                    <input type="hidden" id="member-id">
+                    
+                    <div class="form-group">
+                        <label for="member-name">Full Name</label>
+                        <input type="text" id="member-name" placeholder="John Doe" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="member-phone">Phone Number</label>
+                        <input type="tel" id="member-phone" placeholder="+234 800 000 0000" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="member-email">Email Address</label>
+                        <input type="email" id="member-email" placeholder="john@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="member-occupation">Occupation</label>
+                        <input type="text" id="member-occupation" placeholder="Software Engineer">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="member-address">Full Address</label>
+                        <input type="text" id="member-address" placeholder="123 Community Street, Kaduna" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="member-bio">Bio/Description</label>
+                        <textarea id="member-bio" rows="3" placeholder="Tell us about yourself..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Profile Photo</label>
+                        <div class="photo-upload-container">
+                            <img id="member-photo-preview" class="admin-photo-preview" alt="Preview">
+                            <input type="file" id="member-photo" accept="image/*" style="display: none;">
+                            <label for="member-photo" class="file-input-label">
+                                <i class="fas fa-camera"></i> Change Photo
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-accent">Save Member</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="delete-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirm Deletion</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="delete-message">Are you sure you want to delete this member? This action cannot be undone.</p>
+                <div style="display: flex; gap: 15px; margin-top: 20px;">
+                    <button class="btn" id="cancel-delete">Cancel</button>
+                    <button class="btn btn-accent" id="confirm-delete">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- Admin Dashboard Section -->
+    <div class="admin-section" id="admin-section">
+        <div class="container">
+            <div class="admin-header">
+                <div class="admin-info">
+                    <div class="admin-avatar" id="admin-avatar">
+                        <div class="admin-dropdown" id="admin-dropdown">
+                            <a href="#" id="edit-profile-btn"><i class="fas fa-user-edit"></i> Edit Profile</a>
+                            <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Admin Dashboard</h3>
+                        <p>Welcome back, <span id="admin-name">Admin User</span></p>
+                    </div>
+                </div>
+                <button class="btn" id="add-member-btn"><i class="fas fa-user-plus"></i> Add New Member</button>
+            </div>
+            
+            <div class="admin-stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="total-members">0</div>
+                    <div class="stat-label">Total Members</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number" id="new-members">0</div>
+                    <div class="stat-label">New This Week</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number" id="active-members">0</div>
+                    <div class="stat-label">Active Members</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number" id="pending-approvals">0</div>
+                    <div class="stat-label">Pending Approvals</div>
+                </div>
+            </div>
+            
+            <div class="section-title">
+                <h2>Community Members</h2>
+            </div>
+            
+            <div id="members-container">
+                <table class="members-table">
+                    <thead>
+                        <tr>
+                            <th>Photo</th>
+                            <th>Name</th>
+                            <th>Contact</th>
+                            <th>Occupation</th>
+                            <th>Location</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="members-list">
+                        <!-- Members will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="admin-profile-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Admin Profile</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="admin-profile-form">
+                    <div class="form-group">
+                        <label for="admin-edit-name">Full Name</label>
+                        <input type="text" id="admin-edit-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="admin-edit-email">Email</label>
+                        <input type="email" id="admin-edit-email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="admin-edit-password">New Password (leave blank to keep current)</label>
+                        <input type="password" id="admin-edit-password">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Profile Photo</label>
+                        <div class="photo-upload-container">
+                            <img id="admin-photo-preview" class="admin-photo-preview" alt="Preview">
+                            <input type="file" id="admin-photo" accept="image/*" style="display: none;">
+                            <label for="admin-photo" class="file-input-label">
+                                <i class="fas fa-camera"></i> Change Photo
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-accent">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="member-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="member-modal-title">Edit Member</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="member-form">
+                    <input type="hidden" id="member-id">
+                    
+                    <div class="form-group">
+                        <label for="member-name">Full Name</label>
+                        <input type="text" id="member-name" placeholder="John Doe" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="member-phone">Phone Number</label>
+                        <input type="tel" id="member-phone" placeholder="+234 800 000 0000" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="member-email">Email Address</label>
+                        <input type="email" id="member-email" placeholder="john@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="member-occupation">Occupation</label>
+                        <input type="text" id="member-occupation" placeholder="Software Engineer">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="member-address">Full Address</label>
+                        <input type="text" id="member-address" placeholder="123 Community Street, Kaduna" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="member-bio">Bio/Description</label>
+                        <textarea id="member-bio" rows="3" placeholder="Tell us about yourself..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Profile Photo</label>
+                        <div class="photo-upload-container">
+                            <img id="member-photo-preview" class="admin-photo-preview" alt="Preview">
+                            <input type="file" id="member-photo" accept="image/*" style="display: none;">
+                            <label for="member-photo" class="file-input-label">
+                                <i class="fas fa-camera"></i> Change Photo
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-accent">Save Member</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="delete-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirm Deletion</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="delete-message">Are you sure you want to delete this member? This action cannot be undone.</p>
+                <div style="display: flex; gap: 15px; margin-top: 20px;">
+                    <button class="btn" id="cancel-delete">Cancel</button>
+                    <button class="btn btn-accent" id="confirm-delete">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Manass One Nation Kaduna Regus is a community dedicated to fostering connections, supporting local talent, and creating opportunities for growth and collaboration.</p>
+                <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61575006099089"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/manassonenation"><i class="fab fa-x"></i></a>
+                        <a href="https://www.instagram.com/manassonenationkadunaregus?igsh=ZGUzMzM3NWJiOQ=="><i class="fab fa-instagram"></i></a>
+                        <a href="https://m.youtube.com/channel/UCEdFShA7UBFEDs5L-FjSGFw"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Admin Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Admin Documentation</a></li>
+                        <li><a href="#">Community Guidelines</a></li>
+                        <li><a href="#">Member Management</a></li>
+                        <li><a href="#">Data Security</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Support</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>support@manassonenationkadunaregus@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+2347063849950 +2349041356195 +2348144722911</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Sat-Sun: 6AM - 8AM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Manass One Nation Kaduna Regus Community. All rights reserved.</p>
+                <p>Admin Portal v2.0 | Enhanced Member Management</p>
+            </div>
+        </div>
+    </footer>
+
+   <script>
+        // DOM elements
+        const authSection = document.getElementById('auth-section');
+        const adminSection = document.getElementById('admin-section');
+        const authTabs = document.querySelectorAll('.auth-tab');
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+        const logoutBtn = document.getElementById('logout-btn');
+        const membersList = document.getElementById('members-list');
+        const adminName = document.getElementById('admin-name');
+        const adminAvatar = document.getElementById('admin-avatar');
+        const adminDropdown = document.getElementById('admin-dropdown');
+        const editProfileBtn = document.getElementById('edit-profile-btn');
+        const addMemberBtn = document.getElementById('add-member-btn');
+        
+        // Modal elements
+        const modals = document.querySelectorAll('.modal');
+        const adminProfileModal = document.getElementById('admin-profile-modal');
+        const memberModal = document.getElementById('member-modal');
+        const deleteModal = document.getElementById('delete-modal');
+        const closeModalBtns = document.querySelectorAll('.close-modal');
+        const cancelDeleteBtn = document.getElementById('cancel-delete');
+        const confirmDeleteBtn = document.getElementById('confirm-delete');
+        
+        // Form elements
+        const adminProfileForm = document.getElementById('admin-profile-form');
+        const memberForm = document.getElementById('member-form');
+        
+        // Initialize admins and members
+        let admins = JSON.parse(localStorage.getItem('communityAdmins')) || [];
+        let members = JSON.parse(localStorage.getItem('communityMembers')) || [];
+        let currentAdmin = null;
+        let currentMemberToDelete = null;
+        
+        // Tab switching
+        authTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                authTabs.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding form
+                if (tab.dataset.tab === 'login') {
+                    loginForm.style.display = 'block';
+                    signupForm.style.display = 'none';
+                } else {
+                    loginForm.style.display = 'none';
+                    signupForm.style.display = 'block';
+                }
+            });
+        });
+        
+        // Handle login
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            // Find admin
+            const admin = admins.find(a => a.email === email && a.password === password);
+            
+            if (admin) {
+                // Set current admin
+                currentAdmin = admin;
+                sessionStorage.setItem('currentAdmin', JSON.stringify(admin));
+                
+                // Show admin dashboard
+                showAdminDashboard(admin);
+            } else {
+                alert('Invalid credentials. Please try again.');
+            }
+        });
+        
+        // Handle signup
+        signupForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm').value;
+            const photo = document.getElementById('signup-photo-preview').src;
+            
+            // Validate passwords match
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            // Check if admin already exists
+            if (admins.some(a => a.email === email)) {
+                alert('An admin with this email already exists!');
+                return;
+            }
+            
+            // Create new admin
+            const newAdmin = {
+                id: Date.now(),
+                name,
+                email,
+                password,
+                photo,
+                dateCreated: new Date().toISOString()
+            };
+            
+            // Add to admins array
+            admins.push(newAdmin);
+            
+            // Save to localStorage
+            localStorage.setItem('communityAdmins', JSON.stringify(admins));
+            
+            // Set as current admin
+            currentAdmin = newAdmin;
+            sessionStorage.setItem('currentAdmin', JSON.stringify(newAdmin));
+            
+            // Show admin dashboard
+            showAdminDashboard(newAdmin);
+            
+            alert('Admin account created successfully!');
+        });
+        
+        // Handle logout
+        logoutBtn.addEventListener('click', function() {
+            // Clear current admin
+            currentAdmin = null;
+            sessionStorage.removeItem('currentAdmin');
+            
+            // Show auth section
+            authSection.style.display = 'flex';
+            adminSection.style.display = 'none';
+            
+            // Reset forms
+            loginForm.reset();
+            signupForm.reset();
+        });
+        
+        // Show admin dashboard
+        function showAdminDashboard(admin) {
+            // Hide auth section, show admin section
+            authSection.style.display = 'none';
+            adminSection.style.display = 'block';
+            
+            // Set admin name
+            adminName.textContent = admin.name;
+            
+            // Set admin avatar
+            adminAvatar.style.backgroundImage = admin.photo ? `url(${admin.photo})` : 'none';
+            adminAvatar.style.backgroundColor = admin.photo ? 'transparent' : '#3498db';
+            adminAvatar.innerHTML = admin.photo ? '' : admin.name.charAt(0);
+            
+            // Load members
+            loadMembers();
+        }
+        
+        // Admin avatar dropdown
+        adminAvatar.addEventListener('click', function(e) {
+            e.stopPropagation();
+            adminDropdown.classList.toggle('active');
+        });
+        
+        // Close dropdown when clicking elsewhere
+        document.addEventListener('click', function(e) {
+            if (!adminAvatar.contains(e.target)) {
+                adminDropdown.classList.remove('active');
+            }
+        });
+        
+        // Edit profile button
+        editProfileBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            adminDropdown.classList.remove('active');
+            openAdminProfileModal();
+        });
+        
+        // Add member button
+        addMemberBtn.addEventListener('click', function() {
+            openMemberModal(null);
+        });
+        
+        // Modal functionality
+        function openModal(modal) {
+            modal.classList.add('active');
+        }
+        
+        function closeModal(modal) {
+            modal.classList.remove('active');
+        }
+        
+        closeModalBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                modals.forEach(modal => closeModal(modal));
+            });
+        });
+        
+        cancelDeleteBtn.addEventListener('click', function() {
+            closeModal(deleteModal);
+        });
+        
+        // Open admin profile modal
+        function openAdminProfileModal() {
+            document.getElementById('admin-edit-name').value = currentAdmin.name;
+            document.getElementById('admin-edit-email').value = currentAdmin.email;
+            document.getElementById('admin-edit-password').value = '';
+            
+            const photoPreview = document.getElementById('admin-photo-preview');
+            photoPreview.src = currentAdmin.photo || 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+            
+            openModal(adminProfileModal);
+        }
+        
+        // Save admin profile
+        adminProfileForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('admin-edit-name').value;
+            const email = document.getElementById('admin-edit-email').value;
+            const password = document.getElementById('admin-edit-password').value;
+            const photo = document.getElementById('admin-photo-preview').src;
+            
+            // Update admin details
+            currentAdmin.name = name;
+            currentAdmin.email = email;
+            
+            if (password) {
+                currentAdmin.password = password;
+            }
+            
+            currentAdmin.photo = photo;
+            
+            // Update in admins array
+            const adminIndex = admins.findIndex(a => a.id === currentAdmin.id);
+            if (adminIndex !== -1) {
+                admins[adminIndex] = currentAdmin;
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('communityAdmins', JSON.stringify(admins));
+            sessionStorage.setItem('currentAdmin', JSON.stringify(currentAdmin));
+            
+            // Update UI
+            adminName.textContent = currentAdmin.name;
+            adminAvatar.style.backgroundImage = currentAdmin.photo ? `url(${currentAdmin.photo})` : 'none';
+            adminAvatar.style.backgroundColor = currentAdmin.photo ? 'transparent' : '#3498db';
+            adminAvatar.innerHTML = currentAdmin.photo ? '' : currentAdmin.name.charAt(0);
+            
+            closeModal(adminProfileModal);
+            alert('Profile updated successfully!');
+        });
+        
+        // Open member modal (for add/edit)
+        function openMemberModal(member) {
+            const title = document.getElementById('member-modal-title');
+            const form = document.getElementById('member-form');
+            
+            if (member) {
+                // Edit existing member
+                title.textContent = 'Edit Member';
+                document.getElementById('member-id').value = member.id;
+                document.getElementById('member-name').value = member.name;
+                document.getElementById('member-phone').value = member.phone;
+                document.getElementById('member-email').value = member.email || '';
+                document.getElementById('member-occupation').value = member.occupation || '';
+                document.getElementById('member-address').value = member.address;
+                document.getElementById('member-bio').value = member.bio || '';
+                
+                const photoPreview = document.getElementById('member-photo-preview');
+                photoPreview.src = member.photo || 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+            } else {
+                // Add new member
+                title.textContent = 'Add New Member';
+                form.reset();
+                document.getElementById('member-id').value = '';
+                
+                const photoPreview = document.getElementById('member-photo-preview');
+                photoPreview.src = 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+            }
+            
+            openModal(memberModal);
+        }
+        
+        // Save member
+        memberForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const id = document.getElementById('member-id').value;
+            const name = document.getElementById('member-name').value;
+            const phone = document.getElementById('member-phone').value;
+            const email = document.getElementById('member-email').value;
+            const occupation = document.getElementById('member-occupation').value;
+            const address = document.getElementById('member-address').value;
+            const bio = document.getElementById('member-bio').value;
+            const photo = document.getElementById('member-photo-preview').src;
+            
+            if (id) {
+                // Update existing member
+                const memberIndex = members.findIndex(m => m.id == id);
+                if (memberIndex !== -1) {
+                    members[memberIndex] = {
+                        ...members[memberIndex],
+                        name,
+                        phone,
+                        email,
+                        occupation,
+                        address,
+                        bio,
+                        photo
+                    };
+                }
+            } else {
+                // Add new member
+                const newMember = {
+                    id: Date.now(),
+                    name,
+                    phone,
+                    email,
+                    occupation,
+                    address,
+                    bio,
+                    photo,
+                    dateAdded: new Date().toISOString()
+                };
+                members.push(newMember);
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('communityMembers', JSON.stringify(members));
+            
+            // Reload members
+            loadMembers();
+            
+            closeModal(memberModal);
+            alert(`Member ${id ? 'updated' : 'added'} successfully!`);
+        });
+        
+        // Delete member confirmation
+        function confirmDeleteMember(member) {
+            currentMemberToDelete = member;
+            document.getElementById('delete-message').textContent = 
+                `Are you sure you want to delete ${member.name}? This action cannot be undone.`;
+            openModal(deleteModal);
+        }
+        
+        // Confirm delete
+        confirmDeleteBtn.addEventListener('click', function() {
+            if (currentMemberToDelete) {
+                // Remove member
+                members = members.filter(m => m.id !== currentMemberToDelete.id);
+                
+                // Save to localStorage
+                localStorage.setItem('communityMembers', JSON.stringify(members));
+                
+                // Reload members
+                loadMembers();
+                
+                closeModal(deleteModal);
+                alert('Member deleted successfully!');
+            }
+        });
+        
+        // Load members into table
+        function loadMembers() {
+            membersList.innerHTML = '';
+            
+            if (members.length === 0) {
+                membersList.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align: center; padding: 40px;">
+                            <div style="font-size: 1.2rem; color: #777;">
+                                <i class="fas fa-users fa-3x" style="margin-bottom: 20px; color: #ddd;"></i>
+                                <p>No members found. Add the first member to get started.</p>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            } else {
+                members.forEach(member => {
+                    const row = document.createElement('tr');
+                    
+                    row.innerHTML = `
+                        <td>
+                            ${member.photo ? 
+                                `<img src="${member.photo}" class="member-photo" alt="${member.name}">` : 
+                                `<div class="member-photo" style="background: #3498db; display:flex; align-items:center; justify-content:center;">
+                                    <i class="fas fa-user" style="color: white;"></i>
+                                </div>`
+                            }
+                        </td>
+                        <td>${member.name}</td>
+                        <td>
+                            <div>${member.phone}</div>
+                            <div style="font-size: 0.9rem; color: #666;">${member.email || 'No email'}</div>
+                        </td>
+                        <td>${member.occupation || 'Not specified'}</td>
+                        <td>${member.address}</td>
+                        <td>
+                            <button class="action-btn view-btn" title="View Details" onclick="viewMember(${member.id})">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn edit-btn" title="Edit" onclick="openMemberModal(${JSON.stringify(member).replace(/"/g, '&quot;')})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="action-btn delete-btn" title="Delete" onclick="confirmDeleteMember(${JSON.stringify(member).replace(/"/g, '&quot;')})">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </td>
+                    `;
+                    
+                    membersList.appendChild(row);
+                });
+            }
+            
+            // Update stats
+            document.getElementById('total-members').textContent = members.length;
+            document.getElementById('new-members').textContent = getNewMembersCount();
+            document.getElementById('active-members').textContent = Math.floor(members.length * 0.8); // Simulated
+            document.getElementById('pending-approvals').textContent = Math.floor(members.length * 0.1); // Simulated
+        }
+        
+        // Get count of members added in the last 7 days
+        function getNewMembersCount() {
+            const oneWeekAgo = new Date();
+            oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+            
+            return members.filter(member => {
+                const memberDate = new Date(member.dateAdded);
+                return memberDate > oneWeekAgo;
+            }).length;
+        }
+        
+        // View member details
+        function viewMember(id) {
+            const member = members.find(m => m.id == id);
+            if (member) {
+                alert(`Member Details:\n\nName: ${member.name}\nPhone: ${member.phone}\nEmail: ${member.email || 'N/A'}\nOccupation: ${member.occupation || 'N/A'}\nAddress: ${member.address}`);
+            }
+        }
+        
+        // Photo upload handling
+        function setupPhotoUpload(inputId, previewId) {
+            const input = document.getElementById(inputId);
+            const preview = document.getElementById(previewId);
+            
+            input.addEventListener('change', function() {
+                if (this.files && this.files[0]) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        preview.src = e.target.result;
+                    }
+                    
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+        }
+        
+        // Check if admin is already logged in
+        function checkAdminSession() {
+            const storedAdmin = sessionStorage.getItem('currentAdmin');
+            
+            if (storedAdmin) {
+                currentAdmin = JSON.parse(storedAdmin);
+                showAdminDashboard(currentAdmin);
+            }
+        }
+        
+        // Initialize the app
+        function initApp() {
+            // Check for existing session
+            checkAdminSession();
+            
+            // Setup photo uploads
+            setupPhotoUpload('signup-photo', 'signup-photo-preview');
+            setupPhotoUpload('admin-photo', 'admin-photo-preview');
+            setupPhotoUpload('member-photo', 'member-photo-preview');
+            
+            // Add sample members if none exist
+            if (members.length === 0) {
+                members = [
+                    {
+                        id: 1,
+                        name: "Aisha Bello",
+                        phone: "+234 812 345 6789",
+                        email: "aisha.bello@example.com",
+                        occupation: "Software Engineer",
+                        address: "123 Community Street, Kaduna",
+                        bio: "Tech enthusiast with 5+ years of experience",
+                        photo: "",
+                        dateAdded: "2023-07-25T10:30:00Z"
+                    },
+                    {
+                        id: 2,
+                        name: "Chinedu Okoro",
+                        phone: "+234 803 456 7890",
+                        email: "chinedu.okoro@example.com",
+                        occupation: "Marketing Manager",
+                        address: "456 Business Avenue, Kaduna",
+                        bio: "Digital marketing specialist focused on community growth",
+                        photo: "",
+                        dateAdded: "2023-07-20T14:15:00Z"
+                    },
+                    {
+                        id: 3,
+                        name: "Fatima Yusuf",
+                        phone: "+234 817 987 6543",
+                        email: "fatima.yusuf@example.com",
+                        occupation: "Graphic Designer",
+                        address: "789 Creative Road, Kaduna",
+                        bio: "Visual storyteller with passion for community projects",
+                        photo: "",
+                        dateAdded: "2023-07-18T09:45:00Z"
+                    },
+                    {
+                        id: 4,
+                        name: "James Adebayo",
+                        phone: "+234 802 123 4567",
+                        email: "james.adebayo@example.com",
+                        occupation: "Business Consultant",
+                        address: "321 Enterprise Lane, Kaduna",
+                        bio: "Helping businesses grow through strategic planning",
+                        photo: "",
+                        dateAdded: "2023-07-15T16:20:00Z"
+                    }
+                ];
+                
+                localStorage.setItem('communityMembers', JSON.stringify(members));
+            }
+            
+            // Add sample admin if none exist
+            if (admins.length === 0) {
+                admins = [
+                    {
+                        id: 1,
+                        name: "Admin User",
+                        email: "admin@manass.org",
+                        password: "admin123",
+                        photo: "",
+                        dateCreated: "2023-01-01T00:00:00Z"
+                    }
+                ];
+                
+                localStorage.setItem('communityAdmins', JSON.stringify(admins));
+            }
+        }
+        
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initApp);
+        
+        // Make functions available globally for inline event handlers
+        window.openMemberModal = openMemberModal;
+        window.confirmDeleteMember = confirmDeleteMember;
+        window.viewMember = viewMember;
+    </script>
+</body>
+</html>

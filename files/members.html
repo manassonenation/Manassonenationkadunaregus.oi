@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manass One Nation Kaduna Regus - Member Directory</title>
+    <link rel="stylesheet" href="../assets/css/member.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+       
+    </style>
+</head>
+<body>
+    <!-- Toggle Sidebar Button (Mobile) -->
+    <div class="toggle-sidebar">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-icon">
+                <img src="../assets/logo/logo.jpg" alt="logo0" class="l">
+            </div>
+            <div class="logo-text">
+                <h1>Manass One Nation</h1>
+                <p>Kaduna Regus Community</p>
+            </div>
+        </div>
+        
+        <ul class="sidebar-nav">
+            <li><a href="dasboard.html" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="members.html"><i class="fas fa-users"></i> Members Directory</a></li>
+            <li><a href="event.html"><i class="fas fa-calendar-alt"></i> Events</a></li>
+            <li><a href="report.html"><i class="fas fa-file-alt"></i> Reports</a></li>
+            <li><a href="setting.html"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <p>Manass One Nation Kaduna Regus is a community dedicated to fostering connections, supporting local talent, and creating opportunities for growth and collaboration.</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <!-- Content Header -->
+            <div class="content-header">
+                <h2>Community Member Directory</h2>
+                <button class="btn print-btn" onclick="window.print()"><i class="fas fa-print"></i> Print Directory</button>
+            </div>
+            
+            <!-- Add Member Form -->
+            <div class="form-container">
+                <h3 style="margin-bottom: 20px; color: var(--primary);">Add New Member</h3>
+                <form id="member-form">
+                    <div class="form-group">
+                        <label for="nin">National Identity Number (NIN)</label>
+                        <div class="nin-validation">
+                            <input type="text" id="nin" placeholder="Enter your 11-digit NIN" maxlength="11">
+                            <button type="button" id="validate-nin" class="btn btn-sm">Validate NIN</button>
+                        </div>
+                        <div id="nin-details" class="nin-details" style="display: none;">
+                            <h4>NIN Validation Successful</h4>
+                            <p><span id="nin-name"></span></p>
+                            <p><span id="nin-dob"></span></p>
+                            <p><span id="nin-phone"></span></p>
+                            <p> <span id="nin-address"></span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" placeholder="Abba victoria salisu" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="dob">Date of Birth</label>
+                                <input type="date" id="dob" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" placeholder="+234 800 000 0000" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" placeholder="manass@example.com" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="occupation">Occupation</label>
+                                <input type="text" id="occupation" placeholder="Software Engineer">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="address">Full Address</label>
+                                <input type="text" id="address" placeholder="123 Community Street, Kaduna" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bio">Bio/Description</label>
+                        <textarea id="bio" rows="4" placeholder="Tell us about yourself and your work..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Profile Photo</label>
+                        <div class="photo-upload" id="photo-upload-area">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Click to upload a profile photo</p>
+                            <img id="photo-preview" class="photo-preview" alt="Preview">
+                            <input type="file" id="file-input" accept="image/*">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-accent">upload</button>
+                </form>
+            </div>
+            
+            <!-- Member Directory -->
+            <h3 style="margin-bottom: 20px; color: var(--primary);">Community Members</h3>
+            <div id="members-container" class="members-grid">
+                <!-- Members will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Member Sidebar -->
+    <div class="member-sidebar" id="member-sidebar">
+        <div class="member-header">
+            <button class="close-sidebar" id="close-sidebar">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="member-photo-container">
+                <!-- Photo will be inserted here -->
+            </div>
+            <div class="member-info-sidebar">
+                <h2 id="sidebar-name">Abba victoria salisu</h2>
+                <p id="sidebar-occupation">Software Engineer</p>
+            </div>
+        </div>
+        
+        <div class="member-details-grid">
+            <div class="detail-card">
+                <h4>Contact Information</h4>
+                <p id="sidebar-phone">+234 800 000 0000</p>
+                <p id="sidebar-email">manass@example.com</p>
+                <p id="sidebar-address">123 Community Street, Kaduna</p>
+            </div>
+            
+            <div class="detail-card">
+                <h4>Personal Details</h4>
+                <p id="sidebar-dob">January 1, 1980</p>
+                <p id="sidebar-nin">NIN: 12345678901</p>
+            </div>
+            
+            <div class="detail-card">
+                <h4>Member Since</h4>
+                <p id="sidebar-date-added">July 30, 2023</p>
+            </div>
+        </div>
+        
+        <h3 class="section-title">Bio</h3>
+        <p id="sidebar-bio">No bio provided</p>
+        
+        <div class="member-actions" style="margin-top: 30px;">
+            <button class="btn btn-light">
+                <i class="fas fa-envelope"></i> Send Message
+            </button>
+            <button class="btn btn-success">
+                <i class="fas fa-edit"></i> Edit Profile
+            </button>
+        </div>
+    </div>
+    
+ <script>
+        // DOM elements
+        const memberForm = document.getElementById('member-form');
+        const fileInput = document.getElementById('file-input');
+        const photoUploadArea = document.getElementById('photo-upload-area');
+        const photoPreview = document.getElementById('photo-preview');
+        const membersContainer = document.getElementById('members-container');
+        const validateNinBtn = document.getElementById('validate-nin');
+        const ninInput = document.getElementById('nin');
+        const ninDetails = document.getElementById('nin-details');
+        const toggleSidebarBtn = document.querySelector('.toggle-sidebar');
+        const sidebar = document.querySelector('.sidebar');
+        const memberSidebar = document.getElementById('member-sidebar');
+        const closeSidebarBtn = document.getElementById('close-sidebar');
+        
+        // Initialize members array from localStorage or empty array
+        let members = JSON.parse(localStorage.getItem('communityMembers')) || [];
+        let currentMemberData = null;
+
+        // Initialize the app
+        function initApp() {
+            renderMembers();
+            setupEventListeners();
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            // Form submission
+            memberForm.addEventListener('submit', handleFormSubmit);
+            
+            // Photo upload
+            photoUploadArea.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', handleImageUpload);
+            
+            // NIN Validation
+            validateNinBtn.addEventListener('click', validateNIN);
+            
+            // Toggle sidebar
+            toggleSidebarBtn.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+            });
+            
+            // Close member sidebar
+            closeSidebarBtn.addEventListener('click', () => {
+                memberSidebar.classList.remove('active');
+            });
+        }
+
+        // Validate NIN and autofill form
+        function validateNIN() {
+            const nin = ninInput.value.trim();
+            
+            if (!nin || nin.length !== 11) {
+                alert('Please enter a valid 11-digit NIN');
+                return;
+            }
+            
+            // Simulate NIN validation with mock data
+            const mockData = {
+                name: '',
+                dob: '',
+                phone: '',
+                address: ''
+            };
+            
+            // Display NIN details
+            document.getElementById('nin-name').textContent = mockData.name;
+            document.getElementById('nin-dob').textContent = new Date(mockData.dob).toLocaleDateString();
+            document.getElementById('nin-phone').textContent = mockData.phone;
+            document.getElementById('nin-address').textContent = mockData.address;
+            ninDetails.style.display = 'block';
+            
+            // Autofill the form
+            document.getElementById('name').value = mockData.name;
+            document.getElementById('dob').value = mockData.dob;
+            document.getElementById('phone').value = mockData.phone;
+            document.getElementById('address').value = mockData.address;
+            
+            // Show success message
+            alert('NIN validated successfully! Form autofilled with your details.');
+        }
+
+        // Handle form submission
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const dob = document.getElementById('dob').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const occupation = document.getElementById('occupation').value;
+            const address = document.getElementById('address').value;
+            const bio = document.getElementById('bio').value;
+            const photo = photoPreview.src || '';
+            const nin = ninInput.value || '';
+            
+            // Create member object
+            currentMemberData = {
+                id: Date.now(), // Unique ID
+                name,
+                dob,
+                phone,
+                email,
+                occupation,
+                address,
+                bio,
+                photo,
+                nin,
+                dateAdded: new Date().toISOString()
+            };
+            
+            // Add to members array
+            members.push(currentMemberData);
+            
+            // Save to localStorage
+            localStorage.setItem('communityMembers', JSON.stringify(members));
+            
+            // Render updated members list
+            renderMembers();
+            
+            // Reset form
+            memberForm.reset();
+            photoPreview.src = '';
+            photoPreview.style.display = 'none';
+            photoUploadArea.querySelector('i').style.display = 'block';
+            photoUploadArea.querySelector('p').style.display = 'block';
+            ninDetails.style.display = 'none';
+            
+            // Show success message
+            alert('Member added successfully!');
+            
+            // Show member in sidebar
+            showMemberInSidebar(currentMemberData);
+        }
+
+        // Show member in sidebar
+        function showMemberInSidebar(member) {
+            // Set member details
+            document.getElementById('sidebar-name').textContent = member.name;
+            document.getElementById('sidebar-occupation').textContent = member.occupation || 'Not specified';
+            document.getElementById('sidebar-phone').textContent = member.phone;
+            document.getElementById('sidebar-email').textContent = member.email || 'Not provided';
+            document.getElementById('sidebar-address').textContent = member.address;
+            document.getElementById('sidebar-dob').textContent = new Date(member.dob).toLocaleDateString();
+            document.getElementById('sidebar-nin').textContent = `NIN: ${member.nin || 'Not provided'}`;
+            document.getElementById('sidebar-date-added').textContent = new Date(member.dateAdded).toLocaleDateString();
+            document.getElementById('sidebar-bio').textContent = member.bio || 'No bio provided';
+            
+            // Set member photo
+            const photoContainer = document.getElementById('member-photo-container');
+            photoContainer.innerHTML = '';
+            
+            if (member.photo) {
+                const img = document.createElement('img');
+                img.src = member.photo;
+                img.alt = 'Profile Photo';
+                img.className = 'member-photo-sidebar';
+                photoContainer.appendChild(img);
+            } else {
+                const div = document.createElement('div');
+                div.className = 'no-photo-sidebar';
+                div.innerHTML = '<i class="fas fa-user"></i>';
+                photoContainer.appendChild(div);
+            }
+            
+            // Show sidebar
+            memberSidebar.classList.add('active');
+        }
+
+        // Handle image upload
+        function handleImageUpload(e) {
+            const file = e.target.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                
+                reader.onload = function(event) {
+                    photoPreview.src = event.target.result;
+                    photoPreview.style.display = 'block';
+                    photoUploadArea.querySelector('i').style.display = 'none';
+                    photoUploadArea.querySelector('p').style.display = 'none';
+                };
+                
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Render members to the page
+        function renderMembers() {
+            membersContainer.innerHTML = '';
+            
+            if (members.length === 0) {
+                membersContainer.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: white; border-radius: 10px; box-shadow: var(--shadow);">
+                        <i class="fas fa-users fa-3x" style="color: #ddd; margin-bottom: 20px;"></i>
+                        <h3>No Members Found</h3>
+                        <p>Add the first member to our community directory!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            members.forEach(member => {
+                const memberCard = document.createElement('div');
+                memberCard.className = 'member-card';
+                
+                memberCard.innerHTML = `
+                    ${member.photo ? `<img src="${member.photo}" class="member-photo" alt="${member.name}">` : 
+                    `<div class="no-photo">
+                        <i class="fas fa-user"></i>
+                    </div>`}
+                    <div class="member-info">
+                        <h3 class="member-name">${member.name}</h3>
+                        <div class="member-details">
+                            <p><i class="fas fa-briefcase"></i> ${member.occupation || 'Not specified'}</p>
+                            <p><i class="fas fa-phone"></i> ${member.phone}</p>
+                            <p><i class="fas fa-envelope"></i> ${member.email || 'Not specified'}</p>
+                            <p><i class="fas fa-id-card"></i> NIN: ${member.nin || 'Not provided'}</p>
+                        </div>
+                        <div class="member-actions">
+                            <button class="btn btn-sm btn-light" data-id="${member.id}">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                            <button class="btn btn-sm btn-success" data-id="${member.id}">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                // Add event listener to view button
+                const viewBtn = memberCard.querySelector('.btn-light');
+                viewBtn.addEventListener('click', () => {
+                    const memberId = viewBtn.getAttribute('data-id');
+                    const member = members.find(m => m.id == memberId);
+                    if (member) showMemberInSidebar(member);
+                });
+                
+                // Add event listener to edit button
+                const editBtn = memberCard.querySelector('.btn-success');
+                editBtn.addEventListener('click', () => {
+                    const memberId = editBtn.getAttribute('data-id');
+                    const member = members.find(m => m.id == memberId);
+                    if (member) {
+                        // Fill form with member data
+                        document.getElementById('name').value = member.name;
+                        document.getElementById('dob').value = member.dob;
+                        document.getElementById('phone').value = member.phone;
+                        document.getElementById('email').value = member.email;
+                        document.getElementById('occupation').value = member.occupation || '';
+                        document.getElementById('address').value = member.address;
+                        document.getElementById('bio').value = member.bio || '';
+                        document.getElementById('nin').value = member.nin || '';
+                        
+                        if (member.photo) {
+                            photoPreview.src = member.photo;
+                            photoPreview.style.display = 'block';
+                            photoUploadArea.querySelector('i').style.display = 'none';
+                            photoUploadArea.querySelector('p').style.display = 'none';
+                        }
+                        
+                        // Remove member from list
+                        members = members.filter(m => m.id != memberId);
+                        localStorage.setItem('communityMembers', JSON.stringify(members));
+                        renderMembers();
+                        
+                        // Scroll to form
+                        document.getElementById('member-form').scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+                
+                membersContainer.appendChild(memberCard);
+            });
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+    <script src="../assets/js/crypto.js.download"></script>
+    <script src="../assets/js/file_uploader.bundle.KYO3VW26.js.download"></script>
+    <script src="../assets/js/frappe-web.bundle.6MQNLIPR.js.download"></script>
+    <script src="../assets/js/home.js.download"></script>
+    <script src="../assets/js/web.js.download"></script>
+    <script src="../assets/js/web_form.bundle.4XU6JNZP.js.download"></script>
+    <script src="../assets/js/website_script.js.download"></script>
+</body>
+</html>

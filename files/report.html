@@ -1,0 +1,614 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Reports - Manass One Nation Kaduna Regus</title>
+    <link rel="stylesheet" href="../assets/css/report.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+<img src="../assets/logo/logo.jpg" alt="logo" class="l">
+                </div>
+                <div class="logo-text">
+                    <h1>Manass One Nation</h1>
+                    <p>Kaduna Regus Community</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../home.html">Home</a></li>
+                    <li><a href="members.html">Members</a></li>
+                    <li><a href="event.html">Events</a></li>
+                    <li><a href="report.html" class="active">Reports</a></li>
+                    <li><a href="setting.html">Settings</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Report Header -->
+    <div class="container">
+        <div class="report-header">
+            <h1>Community Quarterly Report</h1>
+            <p>Comprehensive analysis of community activities, membership, and finances for Q3 2023</p>
+            
+            <div class="report-meta">
+                <div><i class="fas fa-calendar"></i> Reporting Period: July 1, 2023 - September 30, 2023</div>
+                <div><i class="fas fa-user"></i> Prepared by: Community Management Team</div>
+                <div><i class="fas fa-clock"></i> Generated: October 5, 2023</div>
+            </div>
+            
+            <div class="report-actions">
+                <button class="btn btn-accent"><i class="fas fa-file-pdf"></i> Export PDF</button>
+                <button class="btn btn-success"><i class="fas fa-file-excel"></i> Export Excel</button>
+                <button class="btn btn-outline"><i class="fas fa-print"></i> Print Report</button>
+            </div>
+        </div>
+        
+        <!-- Report Filters -->
+        <div class="report-filters">
+            <div class="filter-title">Customize Report</div>
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="report-period">Report Period</label>
+                    <select id="report-period">
+                        <option>Last 7 Days</option>
+                        <option>Last 30 Days</option>
+                        <option selected>Last Quarter</option>
+                        <option>Last Year</option>
+                        <option>Custom Range</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="start-date">Start Date</label>
+                    <input type="date" id="start-date" value="2023-07-01">
+                </div>
+                
+                <div class="filter-group">
+                    <label for="end-date">End Date</label>
+                    <input type="date" id="end-date" value="2023-09-30">
+                </div>
+                
+                <div class="filter-group">
+                    <label for="report-type">Report Type</label>
+                    <select id="report-type">
+                        <option selected>Comprehensive Report</option>
+                        <option>Membership Report</option>
+                        <option>Financial Report</option>
+                        <option>Events Report</option>
+                        <option>Training Report</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-secondary"><i class="fas fa-sync"></i> Generate Report</button>
+        </div>
+        
+        <!-- Report Summary -->
+        <div class="report-summary">
+            <div class="summary-card">
+                <div class="summary-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="summary-value">1,248</div>
+                <div class="summary-label">Total Members</div>
+            </div>
+            
+            <div class="summary-card">
+                <div class="summary-icon finance">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <div class="summary-value">₦ 1,250,000</div>
+                <div class="summary-label">Community Funds</div>
+            </div>
+            
+            <div class="summary-card">
+                <div class="summary-icon events">
+                    <i class="fas fa-calendar"></i>
+                </div>
+                <div class="summary-value">28</div>
+                <div class="summary-label">Events Hosted</div>
+            </div>
+            
+            <div class="summary-card">
+                <div class="summary-icon training">
+                    <i class="fas fa-running"></i>
+                </div>
+                <div class="summary-value">412</div>
+                <div class="summary-label">Training Participants</div>
+            </div>
+        </div>
+        
+        <!-- Charts Section -->
+        <div class="charts-section">
+            <div class="chart-container">
+                <div class="chart-header">
+                    <div class="chart-title">Membership Growth</div>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="membershipChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-header">
+                    <div class="chart-title">Event Attendance</div>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="attendanceChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Key Findings -->
+        <div class="key-findings">
+            <h3 class="section-title">Key Findings</h3>
+            <ul class="findings-list">
+                <li class="finding-item positive">
+                    <div class="finding-icon">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <div class="finding-content">
+                        <h4>Membership Growth</h4>
+                        <p>15% increase in membership compared to last quarter, with 162 new members joining the community.</p>
+                    </div>
+                </li>
+                
+                <li class="finding-item positive">
+                    <div class="finding-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="finding-content">
+                        <h4>Event Engagement</h4>
+                        <p>Average event attendance increased by 22% with the charity run being the most attended event (245 participants).</p>
+                    </div>
+                </li>
+                
+                <li class="finding-item">
+                    <div class="finding-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <div class="finding-content">
+                        <h4>Financial Health</h4>
+                        <p>Community funds grew by ₦320,000 this quarter, with membership fees accounting for 65% of income.</p>
+                    </div>
+                </li>
+                
+                <li class="finding-item negative">
+                    <div class="finding-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="finding-content">
+                        <h4>Youth Participation</h4>
+                        <p>Youth programs saw 8% lower participation than expected. New strategies needed for Q4 engagement.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Detailed Reports -->
+        <div class="detailed-reports">
+            <!-- Membership Report -->
+            <div class="report-section">
+                <h3 class="section-title">Membership Analysis</h3>
+                
+                <div class="chart-container" style="margin-bottom: 30px;">
+                    <div class="chart-header">
+                        <div class="chart-title">Membership Demographics</div>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="demographicsChart"></canvas>
+                    </div>
+                </div>
+                
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>Age Group</th>
+                            <th>Members</th>
+                            <th>% of Total</th>
+                            <th>Growth (Q2 to Q3)</th>
+                            <th>Activity Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>18-25</td>
+                            <td>285</td>
+                            <td>23%</td>
+                            <td>+12%</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td>26-35</td>
+                            <td>482</td>
+                            <td>39%</td>
+                            <td>+15%</td>
+                            <td>Very High</td>
+                        </tr>
+                        <tr>
+                            <td>36-45</td>
+                            <td>278</td>
+                            <td>22%</td>
+                            <td>+8%</td>
+                            <td>Medium</td>
+                        </tr>
+                        <tr>
+                            <td>46-55</td>
+                            <td>128</td>
+                            <td>10%</td>
+                            <td>+5%</td>
+                            <td>Medium</td>
+                        </tr>
+                        <tr>
+                            <td>56+</td>
+                            <td>75</td>
+                            <td>6%</td>
+                            <td>+3%</td>
+                            <td>Low</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Financial Report -->
+            <div class="report-section">
+                <h3 class="section-title">Financial Overview</h3>
+                
+                <div class="chart-container" style="margin-bottom: 30px;">
+                    <div class="chart-header">
+                        <div class="chart-title">Income vs Expenses</div>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="financeChart"></canvas>
+                    </div>
+                </div>
+                
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Income (₦)</th>
+                            <th>Expenses (₦)</th>
+                            <th>Net (₦)</th>
+                            <th>% of Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Membership Fees</td>
+                            <td>850,000</td>
+                            <td>-</td>
+                            <td>+850,000</td>
+                            <td>68%</td>
+                        </tr>
+                        <tr>
+                            <td>Event Fees</td>
+                            <td>215,000</td>
+                            <td>-</td>
+                            <td>+215,000</td>
+                            <td>17%</td>
+                        </tr>
+                        <tr>
+                            <td>Donations</td>
+                            <td>185,000</td>
+                            <td>-</td>
+                            <td>+185,000</td>
+                            <td>15%</td>
+                        </tr>
+                        <tr>
+                            <td>Event Expenses</td>
+                            <td>-</td>
+                            <td>320,000</td>
+                            <td>-320,000</td>
+                            <td>26%</td>
+                        </tr>
+                        <tr>
+                            <td>Facility Maintenance</td>
+                            <td>-</td>
+                            <td>150,000</td>
+                            <td>-150,000</td>
+                            <td>12%</td>
+                        </tr>
+                        <tr>
+                            <td>Staff & Training</td>
+                            <td>-</td>
+                            <td>280,000</td>
+                            <td>-280,000</td>
+                            <td>22%</td>
+                        </tr>
+                        <tr style="font-weight: bold; background: #f8f9fa;">
+                            <td>Total</td>
+                            <td>1,250,000</td>
+                            <td>750,000</td>
+                            <td>+500,000</td>
+                            <td>100%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Training Report -->
+            <div class="report-section">
+                <h3 class="section-title">Training Programs</h3>
+                
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>Program</th>
+                            <th>Participants</th>
+                            <th>Avg. Rating</th>
+                            <th>Completion Rate</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Youth Sports Camp</td>
+                            <td>125</td>
+                            <td>4.8/5</td>
+                            <td>98%</td>
+                            <td><span style="color: var(--success);">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>Military Training Workshop</td>
+                            <td>86</td>
+                            <td>4.6/5</td>
+                            <td>92%</td>
+                            <td><span style="color: var(--success);">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>Leadership Development</td>
+                            <td>68</td>
+                            <td>4.7/5</td>
+                            <td>94%</td>
+                            <td><span style="color: var(--success);">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>Vocational Skills Training</td>
+                            <td>105</td>
+                            <td>4.5/5</td>
+                            <td>85%</td>
+                            <td><span style="color: var(--success);">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>Digital Literacy Program</td>
+                            <td>78</td>
+                            <td>4.9/5</td>
+                            <td>96%</td>
+                            <td><span style="color: var(--warning);">Ongoing</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Manass One Nation</h3>
+                    <p>Empowering individuals to unlock their full potential through sports, fitness, and community engagement.</p>
+               <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61575006099089"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/manassonenation"><i class="fab fa-x"></i></a>
+                        <a href="https://www.instagram.com/manassonenationkadunaregus?igsh=ZGUzMzM3NWJiOQ=="><i class="fab fa-instagram"></i></a>
+                        <a href="https://m.youtube.com/channel/UCEdFShA7UBFEDs5L-FjSGFw"><i class="fab fa-youtube"></i></a>
+                    </div>
+              
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../home.html">Home</a></li>
+                        <li><a href="#">Members Directory</a></li>
+                        <li><a href="#">Upcoming Events</a></li>
+                        <li><a href="#">Community Guidelines</a></li>
+                        <li><a href="#">Get Involved</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Community Center, Abuja Junction Kaduna, Kaduna Nigeria</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+2347063849950 +2349041356195 +2348144722911</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@manassonenationkadunaregus@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Sat: 6am - 8am, Sun : 6am - 8am</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Manass One Nation Kaduna Regus. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize charts when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Membership Growth Chart
+            const membershipCtx = document.getElementById('membershipChart').getContext('2d');
+            const membershipChart = new Chart(membershipCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+                    datasets: [{
+                        label: 'Total Members',
+                        data: [850, 920, 980, 1020, 1100, 1150, 1200, 1220, 1248],
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        borderColor: '#3498db',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#3498db',
+                        pointRadius: 5,
+                        tension: 0.3,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Event Attendance Chart
+            const attendanceCtx = document.getElementById('attendanceChart').getContext('2d');
+            const attendanceChart = new Chart(attendanceCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Charity Run', 'Youth Camp', 'Military Workshop', 'Leadership Seminar', 'Community Meeting'],
+                    datasets: [{
+                        label: 'Attendance',
+                        data: [245, 180, 86, 105, 75],
+                        backgroundColor: [
+                            'rgba(231, 76, 60, 0.7)',
+                            'rgba(46, 204, 113, 0.7)',
+                            'rgba(52, 152, 219, 0.7)',
+                            'rgba(155, 89, 182, 0.7)',
+                            'rgba(243, 156, 18, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgb(231, 76, 60)',
+                            'rgb(46, 204, 113)',
+                            'rgb(52, 152, 219)',
+                            'rgb(155, 89, 182)',
+                            'rgb(243, 156, 18)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Demographics Chart
+            const demographicsCtx = document.getElementById('demographicsChart').getContext('2d');
+            const demographicsChart = new Chart(demographicsCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['18-25 Years', '26-35 Years', '36-45 Years', '46-55 Years', '56+ Years'],
+                    datasets: [{
+                        data: [285, 482, 278, 128, 75],
+                        backgroundColor: [
+                            'rgba(52, 152, 219, 0.7)',
+                            'rgba(46, 204, 113, 0.7)',
+                            'rgba(243, 156, 18, 0.7)',
+                            'rgba(155, 89, 182, 0.7)',
+                            'rgba(231, 76, 60, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgb(52, 152, 219)',
+                            'rgb(46, 204, 113)',
+                            'rgb(243, 156, 18)',
+                            'rgb(155, 89, 182)',
+                            'rgb(231, 76, 60)'
+                        ],
+              borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right'
+                        }
+                    }
+                }
+            });
+            
+            // Finance Chart
+            const financeCtx = document.getElementById('financeChart').getContext('2d');
+            const financeChart = new Chart(financeCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Membership Fees', 'Event Fees', 'Donations', 'Event Expenses', 'Facility Maintenance', 'Staff & Training'],
+                    datasets: [{
+                        label: 'Income (₦)',
+                        data: [850000, 215000, 185000, 0, 0, 0],
+                        backgroundColor: 'rgba(46, 204, 113, 0.7)',
+                        borderColor: 'rgb(46, 204, 113)',
+                        borderWidth: 1
+                    }, {
+                        label: 'Expenses (₦)',
+                        data: [0, 0, 0, 320000, 150000, 280000],
+                        backgroundColor: 'rgba(231, 76, 60, 0.7)',
+                        borderColor: 'rgb(231, 76, 60)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

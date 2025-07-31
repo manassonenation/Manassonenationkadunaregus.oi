@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Settings - Manass One Nation Kaduna Regus</title>
+    <link rel="stylesheet" href="../assets/css/settig.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Toggle Sidebar Button (Mobile) -->
+    <div class="toggle-sidebar">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-icon">
+                <img src="../assets/logo/logo.jpg" alt="logo" class="l">
+            </div>
+            <div class="logo-text">
+                <h1>Manass One Nation</h1>
+                <p>Kaduna Regus Community</p>
+            </div>
+        </div>
+        
+        <ul class="sidebar-nav">
+            <li><a href="dasboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="members.html"><i class="fas fa-users"></i> Members</a></li>
+            <li><a href="event.html"><i class="fas fa-calendar-alt"></i> Events</a></li>
+            <li><a href="report.html"><i class="fas fa-file-alt"></i> Reports</a></li>
+            <li><a href="setting.html" class="active"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <p>Manass One Nation Kaduna Regus is a community dedicated to fostering connections, supporting local talent, and creating opportunities for growth and collaboration.</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <!-- Content Header -->
+            <div class="content-header">
+                <h2><i class="fas fa-cog"></i> Community Settings</h2>
+                <button class="btn btn-success"><i class="fas fa-save"></i> Save Changes</button>
+            </div>
+            
+            <!-- Settings Container -->
+            <div class="settings-container">
+                <!-- Settings Tabs -->
+                <div class="settings-tabs">
+                    <div class="settings-tab active" data-tab="general">
+                        <i class="fas fa-cog"></i> General Settings
+                    </div>
+                    <div class="settings-tab" data-tab="membership">
+                        <i class="fas fa-users"></i> Membership
+                    </div>
+                    <div class="settings-tab" data-tab="notifications">
+                        <i class="fas fa-bell"></i> Notifications
+                    </div>
+                    <div class="settings-tab" data-tab="security">
+                        <i class="fas fa-shield-alt"></i> Security
+                    </div>
+                    <div class="settings-tab" data-tab="fields">
+                        <i class="fas fa-list"></i> Custom Fields
+                    </div>
+                    <div class="settings-tab" data-tab="integrations">
+                        <i class="fas fa-plug"></i> Integrations
+                    </div>
+                    <div class="settings-tab" data-tab="backup">
+                        <i class="fas fa-database"></i> Backup & Restore
+                    </div>
+                    <div class="settings-tab" data-tab="advanced">
+                        <i class="fas fa-code"></i> Advanced
+                    </div>
+                </div>
+                
+                <!-- Settings Content -->
+                <div class="settings-content">
+                    <!-- General Settings -->
+                    <div class="settings-section active" id="general-settings">
+                        <h3 class="section-title">General Settings</h3>
+                        <p class="section-description">Configure basic community information and preferences</p>
+                        
+                        <form class="settings-form">
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label for="community-name">Community Name</label>
+                                        <input type="text" id="community-name" value="Manass One Nation Kaduna Regus">
+                                    </div>
+                                </div>
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label for="community-tagline">Tagline</label>
+                                        <input type="text" id="community-tagline" value="Empowering individuals through community">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="community-description">Description</label>
+                                <textarea id="community-description" rows="4">Manass One Nation Kaduna Regus is a vibrant community of professionals, creatives, and leaders committed to fostering growth, collaboration, and positive impact in our region.</textarea>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label for="community-address">Address</label>
+                                        <input type="text" id="community-address" value="Community Center, Regus Area, Kaduna, Nigeria">
+                                    </div>
+                                </div>
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label for="community-phone">Phone Number</label>
+                                        <input type="text" id="community-phone" value="+234 800 123 4567">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label for="community-email">Contact Email</label>
+                                        <input type="email" id="community-email" value="contact@manasscommunity.org">
+                                    </div>
+                                </div>
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label for="website-url">Website URL</label>
+                                        <input type="url" id="website-url" value="https://manasscommunity.org">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Community Logo</label>
+                                <div class="photo-upload" style="max-width: 300px;">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Click to upload a new logo</p>
+                                    <input type="file" style="display: none;">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Membership Settings -->
+                    <div class="settings-section" id="membership-settings">
+                        <h3 class="section-title">Membership Settings</h3>
+                        <p class="section-description">Configure membership requirements and approval process</p>
+                        
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label>Membership Approval</label>
+                                <div class="checkbox-group">
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span>Require admin approval for new members</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Membership Requirements</label>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="req-nin" checked>
+                                    <label for="req-nin">Require National Identity Number (NIN)</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="req-address" checked>
+                                    <label for="req-address">Require full address</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="req-occupation">
+                                    <label for="req-occupation">Require occupation information</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="req-bio">
+                                    <label for="req-bio">Require personal bio</label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="membership-fee">Annual Membership Fee (₦)</label>
+                                <input type="number" id="membership-fee" value="5000">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="payment-methods">Payment Methods</label>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="pay-bank" checked>
+                                    <label for="pay-bank">Bank Transfer</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="pay-card" checked>
+                                    <label for="pay-card">Credit/Debit Card</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="pay-cash">
+                                    <label for="pay-cash">Cash Payment</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="pay-online">
+                                    <label for="pay-online">Online Payment Gateway</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Notification Settings -->
+                    <div class="settings-section" id="notifications-settings">
+                        <h3 class="section-title">Notification Settings</h3>
+                        <p class="section-description">Configure how members receive notifications</p>
+                        
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label>Email Notifications</label>
+                                <div class="checkbox-group">
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span>Enable email notifications</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>SMS Notifications</label>
+                                <div class="checkbox-group">
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span>Enable SMS notifications</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Notification Events</label>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="event-created" checked>
+                                    <label for="event-created">When new events are created</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="event-reminder" checked>
+                                    <label for="event-reminder">Event reminders</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="member-joined" checked>
+                                    <label for="member-joined">When new members join</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="payment-received">
+                                    <label for="payment-received">When payments are received</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="announcements">
+                                    <label for="announcements">Community announcements</label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="notification-email">Notification Email Address</label>
+                                <input type="email" id="notification-email" value="notifications@manasscommunity.org">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="sms-sender">SMS Sender ID</label>
+                                <input type="text" id="sms-sender" value="MANASS" maxlength="11">
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Security Settings -->
+                    <div class="settings-section" id="security-settings">
+                        <h3 class="section-title">Security Settings</h3>
+                        <p class="section-description">Configure security protocols and access controls</p>
+                        
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label>Two-Factor Authentication</label>
+                                <div class="checkbox-group">
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span>Require 2FA for admin accounts</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Password Policy</label>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="pass-length" checked>
+                                    <label for="pass-length">Minimum 8 characters</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="pass-numbers" checked>
+                                    <label for="pass-numbers">Require numbers</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="pass-symbols">
+                                    <label for="pass-symbols">Require symbols</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="pass-expire">
+                                    <label for="pass-expire">Passwords expire every 90 days</label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="session-timeout">Session Timeout (minutes)</label>
+                                <input type="number" id="session-timeout" value="30" min="5" max="120">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="login-attempts">Max Login Attempts</label>
+                                <input type="number" id="login-attempts" value="5" min="1" max="10">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>IP Restrictions</label>
+                                <div class="checkbox-group">
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span>Enable IP whitelisting for admin access</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="allowed-ips">Allowed IP Addresses</label>
+                                <textarea id="allowed-ips" rows="3" placeholder="Enter one IP per line">192.168.1.1
+192.168.1.2</textarea>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Backup & Restore -->
+                    <div class="settings-section" id="backup-settings">
+                        <h3 class="section-title">Backup & Restore</h3>
+                        <p class="section-description">Manage your community data backups</p>
+                        
+                        <div class="backup-cards">
+                            <div class="backup-card">
+                                <h3><i class="fas fa-cloud-download-alt"></i> Create Backup</h3>
+                                <p>Create a full backup of all community data including members, events, and settings.</p>
+                                <button class="btn btn-secondary"><i class="fas fa-download"></i> Create Backup Now</button>
+                            </div>
+                            
+                            <div class="backup-card">
+                                <h3><i class="fas fa-history"></i> Restore Backup</h3>
+                                <p>Restore your community data from a previously saved backup file.</p>
+                                <button class="btn btn-light"><i class="fas fa-upload"></i> Upload Backup File</button>
+                            </div>
+                            
+                            <div class="backup-card">
+                                <h3><i class="fas fa-sync-alt"></i> Auto Backup</h3>
+                                <p>Configure automatic backups to run at scheduled times.</p>
+                                <div class="form-group" style="margin-top: 15px;">
+                                    <label for="backup-frequency">Backup Frequency</label>
+                                    <select id="backup-frequency" class="form-control">
+                                        <option>Daily</option>
+                                        <option selected>Weekly</option>
+                                        <option>Monthly</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 style="margin-top: 40px; margin-bottom: 20px;">Recent Backups</h3>
+                        <table class="settings-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Size</th>
+                                    <th>Type</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>July 30, 2023 14:30</td>
+                                    <td>15.2 MB</td>
+                                    <td>Full Backup</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-light"><i class="fas fa-download"></i></button>
+                                        <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>July 23, 2023 14:30</td>
+                                    <td>14.8 MB</td>
+                                    <td>Full Backup</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-light"><i class="fas fa-download"></i></button>
+                                        <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>July 16, 2023 14:30</td>
+                                    <td>14.5 MB</td>
+                                    <td>Full Backup</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-light"><i class="fas fa-download"></i></button>
+                         </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Custom Fields -->
+                    <div class="settings-section" id="fields-settings">
+                        <h3 class="section-title">Custom Member Fields</h3>
+                        <p class="section-description">Add custom fields to member profiles</p>
+                        
+                        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 30px;">
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label for="field-name">Field Name</label>
+                                        <input type="text" id="field-name" placeholder="e.g. Skills, Interests">
+                                    </div>
+                                </div>
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label for="field-type">Field Type</label>
+                                        <select id="field-type">
+                                            <option>Text</option>
+                                            <option>Number</option>
+                                            <option>Dropdown</option>
+                                            <option>Date</option>
+                                            <option>Checkbox</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-secondary"><i class="fas fa-plus"></i> Add Field</button>
+                        </div>
+                        
+                        <h3 style="margin-bottom: 20px;">Current Custom Fields</h3>
+                        <table class="settings-table">
+                            <thead>
+                                <tr>
+                                    <th>Field Name</th>
+                                    <th>Type</th>
+                                    <th>Required</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Skills</td>
+                                    <td>Text</td>
+                                    <td><i class="fas fa-check" style="color: var(--success);"></i></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-light"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Interests</td>
+                                    <td>Dropdown</td>
+                                    <td><i class="fas fa-times" style="color: var(--accent);"></i></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-light"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Volunteer Experience</td>
+                                    <td>Text</td>
+                                    <td><i class="fas fa-times" style="color: var(--accent);"></i></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-light"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching functionality
+            const tabs = document.querySelectorAll('.settings-tab');
+            const sections = document.querySelectorAll('.settings-section');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Get target section
+                    const target = this.getAttribute('data-tab');
+                    
+                    // Hide all sections
+                    sections.forEach(section => section.classList.remove('active'));
+                    
+                    // Show target section
+                    document.getElementById(`${target}-settings`).classList.add('active');
+                });
+            });
+            
+            // Toggle sidebar on mobile
+            const toggleBtn = document.querySelector('.toggle-sidebar');
+            const sidebar = document.querySelector('.sidebar');
+            
+            toggleBtn.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+            });
+            
+            // Simulate saving settings
+            const saveBtn = document.querySelector('.btn-success');
+            saveBtn.addEventListener('click', function() {
+                // Add animation to button
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+                
+                // Simulate save delay
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-check"></i> Saved Successfully!';
+                    this.style.backgroundColor = '#27ae60';
+                    
+                    // Reset after 2 seconds
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fas fa-save"></i> Save Changes';
+                        this.style.backgroundColor = '';
+                    }, 2000);
+                }, 1000);
+            });
+            
+            // Initialize tooltips for icons
+            const tooltips = document.querySelectorAll('.btn-sm');
+            tooltips.forEach(btn => {
+                const action = btn.querySelector('i').className.includes('download') ? 'Download' : 
+                               btn.querySelector('i').className.includes('trash') ? 'Delete' : 'Edit';
+                               
+                btn.setAttribute('title', action);
+            });
+        });
+    </script>
+</body>
+</html>

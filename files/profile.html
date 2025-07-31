@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manass One Nation Kaduna Regus - Member Directory</title>
+    <link rel="stylesheet" href="../assets/css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+        <img src="../assets/logo/logo.jpg" alt="logo" class="l">
+                </div>
+                <div class="logo-text">
+                    <h1>Manass One Nation</h1>
+                    <p>Kaduna Regus Community</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../home.html" class="active">Home</a></li>
+                    <li><a href="members.html">Members</a></li>
+                    <li><a href="event.html">Events</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Add Member Form -->
+        <section id="add-member" class="content-section">
+            <div class="section-title">
+                <h2>Add Member Information</h2>
+            </div>
+            
+            <div class="form-container">
+                <form id="member-form">
+                    <div class="form-group">
+                        <label for="nin">National Identity Number (NIN)</label>
+                        <div class="nin-validation">
+                            <input type="text" id="nin" placeholder="Enter your 11-digit NIN" maxlength="11" required>
+                            <button type="button" id="validate-nin" class="btn btn-sm">Validate NIN</button>
+                        </div>
+                        <div id="nin-details" class="nin-details" style="display: none;">
+                            <h4>NIN Validation Successful</h4>
+                            <p> <span id="nin-name"></span></p>
+                            <p> <span id="nin-dob"></span></p>
+                            <p> <span id="nin-phone"></span></p>
+                            <p> <span id="nin-address"></span></p>
+                        </div>
+                        <div id="registration-status" class="registration-status">
+                            <h4>Registration Status</h4>
+                            <p id="status-message"></p>
+                        </div>
+                        <div id="error-message" class="error-message">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span id="error-text"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" placeholder="Abba Victoria Salisu" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="dob">Date of Birth</label>
+                                <input type="date" id="dob" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" placeholder="+234 800 000 0000" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" placeholder="manass@example.com" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="occupation">Occupation</label>
+                                <input type="text" id="occupation" placeholder="Software Engineer">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="address">Full Address</label>
+                                <input type="text" id="address" placeholder="123 Community Street, Kaduna" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bio">Bio/Description</label>
+                        <textarea id="bio" rows="4" placeholder="Tell us about yourself and your work..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Profile Photo</label>
+                        <div class="photo-upload" id="photo-upload-area">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Click to upload a profile photo</p>
+                            <img id="photo-preview" class="photo-preview" alt="Preview">
+                            <input type="file" id="file-input" accept="image/*">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-accent">Upload</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Member Directory -->
+        <section class="content-section">
+            <div class="section-title">
+                <h2>Community Members</h2>
+            </div>
+            
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search members by name, occupation...">
+                <button class="btn" onclick="printPage()">Print Directory</button>
+            </div>
+            
+            <div id="members-container" class="members-grid">
+                <!-- Members will be displayed here -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="preview-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Confirm Member Details</h2>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>Personal Information</h3>
+                    <p><strong>Name:</strong> <span id="preview-name"></span></p>
+                    <p><strong>Date of Birth:</strong> <span id="preview-dob"></span></p>
+                    <p><strong>Phone:</strong> <span id="preview-phone"></span></p>
+                    <p><strong>Email:</strong> <span id="preview-email"></span></p>
+                    <p><strong>Address:</strong> <span id="preview-address"></span></p>
+                    <p><strong>NIN:</strong> <span id="preview-nin"></span></p>
+                </div>
+                <div class="modal-section">
+                    <h3>Professional Information</h3>
+                    <p><strong>Occupation:</strong> <span id="preview-occupation"></span></p>
+                    <p><strong>Bio:</strong> <span id="preview-bio"></span></p>
+                </div>
+                <div class="modal-section">
+                    <h3>Profile Photo</h3>
+                    <div id="preview-photo-container">
+                        <!-- Photo preview will be inserted here -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button id="edit-member" class="btn btn-light">Edit Information</button>
+                <button id="confirm-member" class="btn btn-accent">Confirm and Add</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal delete-close">&times;</span>
+            <div class="delete-confirmation">
+                <i class="fas fa-exclamation-circle fa-3x" style="color: #e74c3c; margin-bottom: 20px;"></i>
+                <h2>Delete Member</h2>
+                <p>Are you sure you want to remove this member from the directory? This action cannot be undone.</p>
+                <div class="modal-actions">
+                    <button id="cancel-delete" class="btn btn-light">Cancel</button>
+                    <button id="confirm-delete" class="btn btn-danger">Delete Permanently</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Member Modal -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-edit-modal">&times;</span>
+            <h2>Edit Member Information</h2>
+            <div class="edit-form-container">
+                <form id="edit-member-form">
+                    <input type="hidden" id="edit-id">
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="edit-name">Full Name</label>
+                                <input type="text" id="edit-name" placeholder="Abba Victoria Salisu" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="edit-dob">Date of Birth</label>
+                                <input type="date" id="edit-dob" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="edit-phone">Phone Number</label>
+                                <input type="tel" id="edit-phone" placeholder="+234 800 000 0000" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="edit-email">Email Address</label>
+                                <input type="email" id="edit-email" placeholder="manass@example.com" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="edit-occupation">Occupation</label>
+                                <input type="text" id="edit-occupation" placeholder="Software Engineer">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="edit-address">Full Address</label>
+                                <input type="text" id="edit-address" placeholder="123 Community Street, Kaduna" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit-bio">Bio/Description</label>
+                        <textarea id="edit-bio" rows="4" placeholder="Tell us about yourself and your work..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Profile Photo</label>
+                        <div class="photo-upload" id="edit-photo-upload-area">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Click to upload a profile photo</p>
+                            <img id="edit-photo-preview" class="photo-preview" alt="Preview">
+                            <input type="file" id="edit-file-input" accept="image/*">
+                        </div>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button type="button" id="cancel-edit" class="btn btn-light">Cancel</button>
+                        <button type="submit" class="btn btn-success">Update Member</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Email Notification -->
+    <div class="email-notification" id="email-notification">
+        <div class="email-header">
+            <i class="fas fa-paper-plane email-icon"></i>
+            <h3>Email Notifications Sent</h3>
+        </div>
+        <div class="email-content">
+            <p>We've sent notifications about the new member:</p>
+            <p><strong id="new-member-name"></strong> has joined our community!</p>
+        </div>
+        <div class="email-addresses" id="email-addresses">
+            <!-- Email addresses will appear here -->
+        </div>
+        <div class="email-progress">
+            <div class="email-progress-bar" id="email-progress-bar"></div>
+        </div>
+        <p class="email-status" id="email-status">Emails sent successfully!</p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+         <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Manass One Nation Kaduna Regus is a community dedicated to fostering connections, supporting local talent, and creating opportunities for growth and collaboration.</p>
+                <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61575006099089"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/manassonenation"><i class="fab fa-x"></i></a>
+                        <a href="https://www.instagram.com/manassonenationkadunaregus?igsh=ZGUzMzM3NWJiOQ=="><i class="fab fa-instagram"></i></a>
+                        <a href="https://m.youtube.com/channel/UCEdFShA7UBFEDs5L-FjSGFw"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../home.html">Home</a></li>
+                        <li><a href="#">Members Directory</a></li>
+                        <li><a href="event.html">Upcoming Events</a></li>
+                        <li><a href="#">Community Guidelines</a></li>
+                        <li><a href="#">Get Involved</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Community Center,Abuja Junction Kaduna , Kaduna Nigeria</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+2347063849950 +2349041356195 +2348144722911</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>manassonenationkadunaregus@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Manass One Nation Kaduna Regus. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM elements
+        const memberForm = document.getElementById('member-form');
+        const fileInput = document.getElementById('file-input');
+        const photoUploadArea = document.getElementById('photo-upload-area');
+        const photoPreview = document.getElementById('photo-preview');
+        const membersContainer = document.getElementById('members-container');
+        const searchInput = document.getElementById('search-input');
+        const validateNinBtn = document.getElementById('validate-nin');
+        const ninInput = document.getElementById('nin');
+        const ninDetails = document.getElementById('nin-details');
+        const errorMessage = document.getElementById('error-message');
+        const errorText = document.getElementById('error-text');
+        const registrationStatus = document.getElementById('registration-status');
+        const statusMessage = document.getElementById('status-message');
+        
+        // Modal elements
+        const previewModal = document.getElementById('preview-modal');
+        const closeModal = document.querySelector('.close-modal');
+        const editMemberBtn = document.getElementById('edit-member');
+        const confirmMemberBtn = document.getElementById('confirm-member');
+        
+        // Delete modal elements
+        const deleteModal = document.getElementById('delete-modal');
+        const cancelDeleteBtn = document.getElementById('cancel-delete');
+        const confirmDeleteBtn = document.getElementById('confirm-delete');
+        const closeDeleteModal = document.querySelector('.delete-close');
+        
+        // Edit modal elements
+        const editModal = document.getElementById('edit-modal');
+        const closeEditModal = document.getElementById('close-edit-modal');
+        const cancelEditBtn = document.getElementById('cancel-edit');
+        const editMemberForm = document.getElementById('edit-member-form');
+        const editFileInput = document.getElementById('edit-file-input');
+        const editPhotoUploadArea = document.getElementById('edit-photo-upload-area');
+        const editPhotoPreview = document.getElementById('edit-photo-preview');
+        
+        // Email notification elements
+        const emailNotification = document.getElementById('email-notification');
+        const emailAddresses = document.getElementById('email-addresses');
+        const emailProgressBar = document.getElementById('email-progress-bar');
+        const emailStatus = document.getElementById('email-status');
+        const newMemberName = document.getElementById('new-member-name');
+        
+        // Initialize members array from localStorage or empty array
+        let members = JSON.parse(localStorage.getItem('communityMembers')) || [];
+        let currentMemberData = null;
+        let memberToDelete = null;
+        let memberToEdit = null;
+
+        // Initialize the app
+        function initApp() {
+            renderMembers();
+            setupEventListeners();
+            checkExistingRegistration();
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            // Form submission
+            memberForm.addEventListener('submit', handleFormSubmit);
+            
+            // Photo upload
+            photoUploadArea.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', handleImageUpload);
+            
+            // Edit photo upload
+            editPhotoUploadArea.addEventListener('click', () => editFileInput.click());
+            editFileInput.addEventListener('change', handleEditImageUpload);
+            
+            // Search functionality
+            searchInput.addEventListener('input', filterMembers);
+            
+            // NIN Validation
+            validateNinBtn.addEventListener('click', validateNIN);
+            
+            // Modal events
+            closeModal.addEventListener('click', () => previewModal.style.display = 'none');
+            closeDeleteModal.addEventListener('click', () => deleteModal.style.display = 'none');
+            closeEditModal.addEventListener('click', () => editModal.style.display = 'none');
+            
+            editMemberBtn.addEventListener('click', () => {
+                previewModal.style.display = 'none';
+            });
+            
+            confirmMemberBtn.addEventListener('click', confirmAddMember);
+            
+            // Delete modal events
+            cancelDeleteBtn.addEventListener('click', () => {
+                deleteModal.style.display = 'none';
+                memberToDelete = null;
+            });
+            
+            confirmDeleteBtn.addEventListener('click', deleteMember);
+            
+            // Edit modal events
+            cancelEditBtn.addEventListener('click', () => {
+                editModal.style.display = 'none';
+                memberToEdit = null;
+            });
+            
+            editMemberForm.addEventListener('submit', handleEditSubmit);
+            
+            // Close modals when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === previewModal) previewModal.style.display = 'none';
+                if (e.target === deleteModal) deleteModal.style.display = 'none';
+                if (e.target === editModal) editModal.style.display = 'none';
+            });
+            
+            // Check for existing registration when NIN changes
+            ninInput.addEventListener('input', checkExistingRegistration);
+        }
+
+        // Check if NIN is already registered
+        function checkExistingRegistration() {
+            const nin = ninInput.value.trim();
+            
+            if (nin.length === 11) {
+                const existingMember = members.find(member => member.nin === nin);
+                
+                if (existingMember) {
+                    registrationStatus.style.display = 'block';
+                    statusMessage.innerHTML = `
+                        This NIN is already registered to <strong>${existingMember.name}</strong>.
+                        <br>Membership Date: ${new Date(existingMember.dateAdded).toLocaleDateString()}
+                        <br>If you need to update your information, please contact support.
+                    `;
+                    disableForm(true);
+                } else {
+                    registrationStatus.style.display = 'none';
+                    disableForm(false);
+                }
+            } else {
+                registrationStatus.style.display = 'none';
+            }
+        }
+
+        // Enable/disable form based on registration status
+        function disableForm(disable) {
+            const formInputs = memberForm.querySelectorAll('input, textarea, button');
+            formInputs.forEach(input => {
+                if (input !== ninInput && input !== validateNinBtn) {
+                    input.disabled = disable;
+                }
+            });
+            
+            if (disable) {
+                document.querySelector('button[type="submit"]').classList.add('disabled');
+            } else {
+                document.querySelector('button[type="submit"]').classList.remove('disabled');
+            }
+        }
+
+        // Validate NIN and autofill form
+        function validateNIN() {
+            const nin = ninInput.value.trim();
+            
+            if (!nin || nin.length !== 11) {
+                showError('Please enter a valid 11-digit NIN');
+                return;
+            }
+            
+            // Check if NIN is already registered
+            const existingMember = members.find(member => member.nin === nin);
+            if (existingMember) {
+                showError('This NIN is already registered. Please contact support if you need to update your information.');
+                return;
+            }
+            
+            // Simulate NIN validation with mock data
+            const mockData = {
+                name: '',
+                dob: '',
+                phone: '',
+                address: ''
+            };
+            
+            // Display NIN details
+            document.getElementById('nin-name').textContent = mockData.name;
+            document.getElementById('nin-dob').textContent = new Date(mockData.dob).toLocaleDateString();
+            document.getElementById('nin-phone').textContent = mockData.phone;
+            document.getElementById('nin-address').textContent = mockData.address;
+            ninDetails.style.display = 'block';
+            errorMessage.style.display = 'none';
+            
+            // Autofill the form
+            document.getElementById('name').value = mockData.name;
+            document.getElementById('dob').value = mockData.dob;
+            document.getElementById('phone').value = mockData.phone;
+            document.getElementById('address').value = mockData.address;
+        }
+
+        // Show error message
+        function showError(message) {
+            errorText.textContent = message;
+            errorMessage.style.display = 'block';
+            ninDetails.style.display = 'none';
+        }
+
+        // Handle form submission
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            const nin = ninInput.value.trim();
+            
+            // Check if NIN is already registered
+            const existingMember = members.find(member => member.nin === nin);
+            if (existingMember) {
+                showError('This NIN is already registered. You cannot register again.');
+                return;
+            }
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const dob = document.getElementById('dob').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const occupation = document.getElementById('occupation').value;
+            const address = document.getElementById('address').value;
+            const bio = document.getElementById('bio').value;
+            const photo = photoPreview.src || '';
+            
+            // Create member object
+            currentMemberData = {
+                id: Date.now(), // Unique ID
+                name,
+                dob,
+                phone,
+                email,
+                occupation,
+                address,
+                bio,
+                photo,
+                nin,
+                dateAdded: new Date().toISOString()
+            };
+            
+            // Show preview modal
+            showPreviewModal(currentMemberData);
+        }
+
+        // Show preview modal with member data
+        function showPreviewModal(data) {
+            document.getElementById('preview-name').textContent = data.name;
+            document.getElementById('preview-dob').textContent = new Date(data.dob).toLocaleDateString();
+            document.getElementById('preview-phone').textContent = data.phone;
+            document.getElementById('preview-email').textContent = data.email || 'Not provided';
+            document.getElementById('preview-address').textContent = data.address;
+            document.getElementById('preview-occupation').textContent = data.occupation || 'Not provided';
+            document.getElementById('preview-bio').textContent = data.bio || 'Not provided';
+            document.getElementById('preview-nin').textContent = data.nin || 'Not provided';
+            
+            const photoContainer = document.getElementById('preview-photo-container');
+            photoContainer.innerHTML = '';
+            
+            if (data.photo) {
+                const img = document.createElement('img');
+                img.src = data.photo;
+                img.alt = 'Profile Preview';
+                img.className = 'modal-photo';
+                photoContainer.appendChild(img);
+            } else {
+                photoContainer.innerHTML = `
+                    <div class="no-photo-preview">
+                        <i class="fas fa-user fa-5x"></i>
+                        <p>No photo uploaded</p>
+                    </div>
+                `;
+            }
+            
+            previewModal.style.display = 'block';
+        }
+
+        // Confirm adding the member
+        function confirmAddMember() {
+            if (!currentMemberData) return;
+            
+            // Add to members array
+            members.push(currentMemberData);
+            
+            // Save to localStorage
+            localStorage.setItem('communityMembers', JSON.stringify(members));
+            
+            // Render updated members list
+            renderMembers();
+            
+            // Reset form
+            memberForm.reset();
+            photoPreview.src = '';
+            photoPreview.style.display = 'none';
+            photoUploadArea.querySelector('i').style.display = 'block';
+            photoUploadArea.querySelector('p').style.display = 'block';
+            ninDetails.style.display = 'none';
+            registrationStatus.style.display = 'none';
+            
+            // Close modal
+            previewModal.style.display = 'none';
+            
+            // Show success message
+            alert('Member added successfully!');
+            
+            // Send email notifications
+            sendEmailNotifications(currentMemberData);
+        }
+
+        // Send email notifications
+        function sendEmailNotifications(newMember) {
+            // Show notification
+            emailNotification.classList.add('show');
+            newMemberName.textContent = newMember.name;
+            
+            // Prepare email content
+            const communityEmail = "manassonenationkadunaregus@gmail.com";
+            const memberEmail = newMember.email;
+            
+            // Display email addresses
+            emailAddresses.innerHTML = `
+                <div><strong>To New Member:</strong> ${memberEmail}</div>
+                <div><strong>To Community:</strong> ${communityEmail}</div>
+            `;
+            
+            // Simulate email sending
+            setTimeout(() => {
+                emailProgressBar.style.width = '100%';
+                emailStatus.textContent = "Emails sent successfully!";
+                
+                // Hide notification after delay
+                setTimeout(() => {
+                    emailNotification.classList.remove('show');
+                }, 5000);
+            }, 1500);
+        }
+
+        // Handle image upload
+        function handleImageUpload(e) {
+            const file = e.target.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                
+                reader.onload = function(event) {
+                    photoPreview.src = event.target.result;
+                    photoPreview.style.display = 'block';
+                    photoUploadArea.querySelector('i').style.display = 'none';
+                    photoUploadArea.querySelector('p').style.display = 'none';
+                };
+                
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Handle edit image upload
+        function handleEditImageUpload(e) {
+            const file = e.target.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                
+                reader.onload = function(event) {
+                    editPhotoPreview.src = event.target.result;
+                    editPhotoPreview.style.display = 'block';
+                    editPhotoUploadArea.querySelector('i').style.display = 'none';
+                    editPhotoUploadArea.querySelector('p').style.display = 'none';
+                };
+                
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Render members to the page
+        function renderMembers(membersArray = members) {
+            membersContainer.innerHTML = '';
+            
+            if (membersArray.length === 0) {
+                membersContainer.innerHTML = `
+                    <div class="no-members">
+                        <i class="fas fa-users"></i>
+                        <h3>No Members Found</h3>
+                        <p>Add the first member to our community directory!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            membersArray.forEach(member => {
+                const memberCard = document.createElement('div');
+                memberCard.className = 'member-card';
+                
+                memberCard.innerHTML = `
+                    ${member.photo ? `<img src="${member.photo}" class="member-photo" alt="${member.name}">` : 
+                    `<div class="member-photo" style="background: #3498db; display:flex; align-items:center; justify-content:center;">
+                        <i class="fas fa-user fa-4x" style="color: white;"></i>
+                    </div>`}
+                    <button class="edit-member" data-id="${member.id}"><i class="fas fa-edit"></i></button>
+                    <button class="delete-member" data-id="${member.id}"><i class="fas fa-trash"></i></button>
+                    <div class="member-info">
+                        <h3 class="member-name">${member.name}</h3>
+                        <div class="member-details">
+                            <p><i class="fas fa-briefcase"></i> ${member.occupation || 'Not specified'}</p>
+                            <p><i class="fas fa-phone"></i> ${member.phone}</p>
+                            <p><i class="fas fa-envelope"></i> ${member.email || 'Not specified'}</p>
+                            <p><i class="fas fa-map-marker-alt"></i> ${member.address}</p>
+                            <p><i class="fas fa-id-card"></i> NIN: ${member.nin || 'Not provided'}</p>
+                            <p><i class="fas fa-birthday-cake"></i> DOB: ${new Date(member.dob).toLocaleDateString()}</p>
+                        </div>
+                        ${member.bio ? `<p class="member-bio">${member.bio}</p>` : ''}
+                    </div>
+                `;
+                
+                // Add event listener to edit button
+                const editBtn = memberCard.querySelector('.edit-member');
+                editBtn.addEventListener('click', () => {
+                    memberToEdit = member.id;
+                    openEditModal(member);
+                });
+                
+                // Add event listener to delete button
+                const deleteBtn = memberCard.querySelector('.delete-member');
+                deleteBtn.addEventListener('click', () => {
+                    memberToDelete = member.id;
+                    deleteModal.style.display = 'block';
+                });
+                
+                membersContainer.appendChild(memberCard);
+            });
+        }
+
+        // Open edit modal with member data
+        function openEditModal(member) {
+            document.getElementById('edit-id').value = member.id;
+            document.getElementById('edit-name').value = member.name;
+            document.getElementById('edit-dob').value = member.dob;
+            document.getElementById('edit-phone').value = member.phone;
+            document.getElementById('edit-email').value = member.email;
+            document.getElementById('edit-occupation').value = member.occupation || '';
+            document.getElementById('edit-address').value = member.address;
+            document.getElementById('edit-bio').value = member.bio || '';
+            
+            if (member.photo) {
+                editPhotoPreview.src = member.photo;
+                editPhotoPreview.style.display = 'block';
+                editPhotoUploadArea.querySelector('i').style.display = 'none';
+                editPhotoUploadArea.querySelector('p').style.display = 'none';
+            } else {
+                editPhotoPreview.src = '';
+                editPhotoPreview.style.display = 'none';
+                editPhotoUploadArea.querySelector('i').style.display = 'block';
+                editPhotoUploadArea.querySelector('p').style.display = 'block';
+            }
+            
+            editModal.style.display = 'block';
+        }
+
+        // Handle edit form submission
+        function handleEditSubmit(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const id = document.getElementById('edit-id').value;
+            const name = document.getElementById('edit-name').value;
+            const dob = document.getElementById('edit-dob').value;
+            const phone = document.getElementById('edit-phone').value;
+            const email = document.getElementById('edit-email').value;
+            const occupation = document.getElementById('edit-occupation').value;
+            const address = document.getElementById('edit-address').value;
+            const bio = document.getElementById('edit-bio').value;
+            const photo = editPhotoPreview.src || '';
+            
+            // Find the member to update
+            const memberIndex = members.findIndex(member => member.id == id);
+            
+            if (memberIndex !== -1) {
+                // Update member data
+                members[memberIndex] = {
+                    ...members[memberIndex],
+                    name,
+                    dob,
+                    phone,
+                    email,
+                    occupation,
+                    address,
+                    bio,
+                    photo
+                };
+                
+                // Save to localStorage
+                localStorage.setItem('communityMembers', JSON.stringify(members));
+                
+                // Render updated members list
+                renderMembers();
+                
+                // Close modal
+                editModal.style.display = 'none';
+                
+                // Show success message
+                alert('Member information updated successfully!');
+            }
+        }
+
+        // Delete a member
+        function deleteMember() {
+            if (!memberToDelete) return;
+            
+            // Filter out the member to delete
+            members = members.filter(member => member.id != memberToDelete);
+            
+            // Save to localStorage
+            localStorage.setItem('communityMembers', JSON.stringify(members));
+            
+            // Render updated members list
+            renderMembers();
+            
+            // Close modal and reset
+            deleteModal.style.display = 'none';
+            memberToDelete = null;
+            
+            // Show success message
+            alert('Member has been removed from the directory.');
+        }
+
+        // Filter members based on search input
+        function filterMembers() {
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            if (!searchTerm) {
+                renderMembers();
+                return;
+            }
+            
+            const filteredMembers = members.filter(member => 
+                member.name.toLowerCase().includes(searchTerm) ||
+                (member.occupation && member.occupation.toLowerCase().includes(searchTerm)) ||
+                (member.email && member.email.toLowerCase().includes(searchTerm)) ||
+                (member.bio && member.bio.toLowerCase().includes(searchTerm)) ||
+                (member.nin && member.nin.toLowerCase().includes(searchTerm))
+            );
+            
+            renderMembers(filteredMembers);
+        }
+
+        // Print the directory
+        function printPage() {
+            window.print();
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
